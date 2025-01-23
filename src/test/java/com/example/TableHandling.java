@@ -47,9 +47,10 @@ public class TableHandling {
                    String country_text = driver.findElement(By.xpath(country_path)).getText();
                    String company_text = driver.findElement(By.xpath(country_company)).getText();
 
-                   System.out.println("----------------------");
+                   System.out.println("========================================================");
                    System.out.println("Helen Bennett is in- " + country_text);
                    System.out.println("Helen Bennett is in- " + company_text);
+                   System.out.println("========================================================");
 
                }
            }

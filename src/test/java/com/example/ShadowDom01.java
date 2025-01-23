@@ -1,16 +1,13 @@
 package com.example;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
 
 public class ShadowDom01 {
@@ -33,13 +30,13 @@ public class ShadowDom01 {
 
         //String userJsPath = "return document.querySelector('#userName').shadowRoot.querySelector('#kils')";
        // WebElement userName = (WebElement) js.executeScript(userJsPath);
-        js.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", chooseFileElement);
+        js.executeScript("arguments[0].scrollIntoView(true);", chooseFileElement);
+        // Action class is used to
 
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+
+        Actions actions = new Actions(driver);
+        actions.scrollToElement(chooseFileElement).build().perform();
+
 
         WebElement pizzaName = (WebElement) js.executeScript("return document.querySelector('#userName').shadowRoot.querySelector('#app2').shadowRoot.querySelector('#pizza')");
         //wait.until(ExpectedConditions.elementToBeClickable(pizzaName));
