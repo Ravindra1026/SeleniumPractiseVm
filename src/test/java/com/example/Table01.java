@@ -1,16 +1,11 @@
 package com.example;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-import java.sql.Driver;
-import java.time.Duration;
 
 public class Table01 {
     @Test
@@ -46,11 +41,7 @@ public class Table01 {
         WebElement boothList = driver.findElement(By.xpath("//p[text() = 'Booth List']"));
         boothList.click();
 
-        // //table[@class='w-full caption-bottom text-sm']/tbody/tr[
-        // i
-        // ]/td[
-        // j
-        // ]
+
         String firstPart = "//table[@class='w-full caption-bottom text-sm']/tbody/tr[";
         String secondPart = "]/td[";
         String thirdPart = "]";
@@ -66,6 +57,12 @@ public class Table01 {
                 System.out.println(data);
             }
         }
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        driver.quit();
 
     }
 }

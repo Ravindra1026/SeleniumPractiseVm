@@ -4,7 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
 
 public class ProfilePage {
     @Test
@@ -21,14 +25,17 @@ public class ProfilePage {
         WebElement signIn = driver.findElement(By.xpath("//button[text() = 'Sign In']"));
         signIn.click();
 
-        WebElement profile = driver.findElement(By.xpath("//p[normalize-space()='Profile']"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text() = 'Profile']")));
+
+        WebElement profile = driver.findElement(By.xpath("//p[text() = 'Profile']"));
         profile.click();
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[normalize-space()='Personal Information']")));
         WebElement personalInformation = driver.findElement(By.xpath("//span[normalize-space()='Personal Information']"));
         personalInformation.click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='Edit']")));
         WebElement editButton = driver.findElement(By.xpath("//button[normalize-space()='Edit']"));
         editButton.click();
-
-
 
 
 
