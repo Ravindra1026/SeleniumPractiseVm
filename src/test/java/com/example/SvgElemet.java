@@ -38,11 +38,14 @@ public class SvgElemet {
         List <WebElement> svgElements = driver.findElements(By.xpath("//*[name() = 'svg'][1]"));
         int svgCount = svgElements.size();
         Actions actions = new Actions(driver);
-        actions.sendKeys(org.openqa.selenium.Keys.ARROW_DOWN).perform();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-        actions.sendKeys(org.openqa.selenium.Keys.ARROW_DOWN).perform();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-        actions.sendKeys(org.openqa.selenium.Keys.ARROW_DOWN).perform();
+//        actions.sendKeys(org.openqa.selenium.Keys.ARROW_DOWN).perform();
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+//        actions.sendKeys(org.openqa.selenium.Keys.ARROW_DOWN).perform();
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+//        actions.sendKeys(org.openqa.selenium.Keys.ARROW_DOWN).perform();
+        for(int i =1; i<=3; i++){
+            actions.sendKeys(org.openqa.selenium.Keys.ARROW_DOWN).perform();
+        }
         //actions.sendKeys(org.openqa.selenium.Keys.ARROW_DOWN).perform();
         //svgElement.click();
         //svgCount(2).click();
@@ -56,16 +59,15 @@ public class SvgElemet {
 
         if(svgElements.size()>=3){
             WebElement firstSvgElement = svgElements.get(2);
-            //actions.moveToElement(firstSvgElement).click().perform();
+            actions.moveToElement(firstSvgElement).click().perform();
 
-
+            System.out.println(driver.getCurrentUrl());
         }
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
 
     }
 
