@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -38,29 +37,15 @@ public class SvgElemet {
         List <WebElement> svgElements = driver.findElements(By.xpath("//*[name() = 'svg'][1]"));
         int svgCount = svgElements.size();
         Actions actions = new Actions(driver);
-//        actions.sendKeys(org.openqa.selenium.Keys.ARROW_DOWN).perform();
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-//        actions.sendKeys(org.openqa.selenium.Keys.ARROW_DOWN).perform();
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-//        actions.sendKeys(org.openqa.selenium.Keys.ARROW_DOWN).perform();
+
         for(int i =1; i<=3; i++){
             actions.sendKeys(org.openqa.selenium.Keys.ARROW_DOWN).perform();
         }
-        //actions.sendKeys(org.openqa.selenium.Keys.ARROW_DOWN).perform();
-        //svgElement.click();
-        //svgCount(2).click();
         System.out.println(svgCount);
-       // actions.moveToElement(svgElements).click().build().perform();
-
-        //svgElements.get(1).click();
-
-
-
 
         if(svgElements.size()>=3){
             WebElement firstSvgElement = svgElements.get(2);
             actions.moveToElement(firstSvgElement).click().perform();
-
             System.out.println(driver.getCurrentUrl());
         }
         try {
@@ -70,7 +55,6 @@ public class SvgElemet {
         }
 
     }
-
 
     @AfterTest
     public void closeBrowser() {
